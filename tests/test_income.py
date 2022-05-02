@@ -1,5 +1,4 @@
 import pytest
-
 from pages.login_page import LoginPage
 from pages.common_page import CommonPage
 from selenium.webdriver.common.keys import Keys
@@ -171,4 +170,3 @@ def test_add_income_witn_incorrect_values(driver):
         )
     )
     assert 'Укажите сумму' in common_page.alert.text
-
