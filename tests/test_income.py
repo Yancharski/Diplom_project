@@ -63,6 +63,22 @@ def test_add_income(driver):
 
 
 @allure.feature('Income')
+@allure.story('Income in balance')
+def test_compare_income_in_balance(driver):
+    login_page = LoginPage(driver)
+    login_page.open()
+    common_page = CommonPage(driver)
+    common_page.income_field.click()
+    WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(
+            common_page.back_to_menu
+        )
+    )
+    common_page.back_to_menu.click()
+    assert '155' in common_page.balance.text
+
+
+@allure.feature('Income')
 @allure.story('Income delete')
 def test_delete_income(driver):
     login_page = LoginPage(driver)

@@ -6,6 +6,10 @@ income_button = (By.XPATH, '/html/body/div[1]/div/main/div[2]/div[2]/div/div[12]
 income_fields = (By.XPATH, '/html/body/div[1]/div/main/div[2]/div[2]/div/div[5]/div/div[2]/a')
 duty_field = (By.XPATH, '/html/body/div[1]/div/main/div[2]/div[2]/div/div[6]/div/div[2]/a')
 balance_field = (By.CSS_SELECTOR, 'span[class="MainHexIndex_hexAmount__TAk-F"]')
+language_button = (By.CSS_SELECTOR, 'button[class="Button_button__QS2NC"]')
+english_language_button = (By.XPATH, '/html/body/div[1]/div/header/div[3]/span/div/div[3]')
+accounts_cash_field = (By.XPATH, '/html/body/div[1]/div/main/div[2]/div[4]/table/tbody/tr[2]/td[1]/div/a/span[2]')
+accounts_field = (By.XPATH, '/html/body/div[1]/div/main/div[2]/div[4]/table/tbody/tr[2]/td[2]')
 
 categories_field = (By.XPATH, '/html/body/div[4]/div/div[2]/div/div[2]/div[2]/div/div[1]/button[2]')
 add_category_button = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div[2]/div/div/div/button[1]')
@@ -45,6 +49,7 @@ now_name_contragent = (By.CSS_SELECTOR, 'span[class="inline"]')
 cash_in_duties = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div[2]/div/div/div/button[2]')
 back_at_main_button = (By.CSS_SELECTOR, 'a[class="btn-icon _size2 _back"]')
 error_field = (By.XPATH, '/html/body/div[4]/div/div[2]/div/div[2]/div/div/div[1]/div[3]/div[2]')
+title_of_category = (By.CSS_SELECTOR, 'div[class="title"]')
 
 
 class CommonPage(BasePage):
@@ -221,3 +226,23 @@ class CommonPage(BasePage):
     @property
     def error(self):
         return self.find_element(error_field)
+
+    @property
+    def change_language(self):
+        return self.find_element(language_button)
+
+    @property
+    def english_language(self):
+        return self.find_element(english_language_button)
+
+    @property
+    def accounts_cash(self):
+        return self.find_element(accounts_cash_field)
+
+    @property
+    def title_of_duty(self):
+        return self.find_element(title_of_category)
+
+    @property
+    def accounts(self):
+        return self.find_element(accounts_field)
