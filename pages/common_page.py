@@ -9,7 +9,8 @@ balance_field = (By.CSS_SELECTOR, 'span[class="MainHexIndex_hexAmount__TAk-F"]')
 language_button = (By.CSS_SELECTOR, 'button[class="Button_button__QS2NC"]')
 english_language_button = (By.XPATH, '/html/body/div[1]/div/header/div[3]/span/div/div[3]')
 accounts_cash_field = (By.XPATH, '/html/body/div[1]/div/main/div[2]/div[4]/table/tbody/tr[2]/td[1]/div/a/span[2]')
-accounts_field = (By.XPATH, '/html/body/div[1]/div/main/div[2]/div[4]/table/tbody/tr[2]/td[2]')
+personal_account_button = (By.XPATH, '/html/body/div[1]/div/header/div[4]/div/button')
+logout_button = (By.XPATH, '/html/body/div[1]/div/header/div[4]/div/div/div/nav/button[2]')
 
 categories_field = (By.XPATH, '/html/body/div[4]/div/div[2]/div/div[2]/div[2]/div/div[1]/button[2]')
 add_category_button = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div[2]/div/div/div/button[1]')
@@ -244,5 +245,9 @@ class CommonPage(BasePage):
         return self.find_element(title_of_category)
 
     @property
-    def accounts(self):
-        return self.find_element(accounts_field)
+    def personal_account(self):
+        return self.find_element(personal_account_button)
+
+    @property
+    def logout(self):
+        return self.find_element(logout_button)

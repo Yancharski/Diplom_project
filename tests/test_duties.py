@@ -249,3 +249,36 @@ def test_add_duty_with_valute_n_contragent(driver):
     common_page.submit_duty.click()
     assert 'Необходимо указать значение' in common_page.error.text
 
+
+@allure.feature('Duties')
+@allure.story('Duty add with incorrect value')
+def test_add_duty_with_incorrect_value(driver):
+    login_page = LoginPage(driver)
+    login_page.open()
+    common_page = CommonPage(driver)
+    common_page.duty.click()
+    WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(
+            common_page.add_duty
+        )
+    )
+    common_page.add_duty.click()
+    WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(
+            common_page.checkbox
+        )
+    )
+    common_page.checkbox.click()
+    common_page.choose_valute.click()
+    WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(
+            common_page.BYN
+        )
+    )
+    common_page.BYN.click()
+    common_page.contragent.click()
+    common_page.chosen_contragent.click()
+    common_page.input_currency.send_keys('')
+    common_page.submit_duty.click()
+    assert 'Необходимо указать значение' in common_page.error.text
+

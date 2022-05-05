@@ -138,7 +138,7 @@ def test_add_income_with_count(driver):
 
 
 @allure.feature('Income')
-@allure.story('Income only with count')
+@allure.story('Income only with count and type of income')
 def test_add_income_without_currency(driver):
     login_page = LoginPage(driver)
     login_page.open()
@@ -163,7 +163,7 @@ def test_add_income_without_currency(driver):
 
 
 @allure.feature('Income')
-@allure.story('Income only with count')
+@allure.story('Income with incorrect values')
 def test_add_income_witn_incorrect_values(driver):
     login_page = LoginPage(driver)
     login_page.open()
