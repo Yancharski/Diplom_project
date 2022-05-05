@@ -30,6 +30,7 @@ def test_add_category(driver):
     common_page.categories.click()
     assert name in common_page.categories_list.text
 
+
 @allure.feature('Income')
 @allure.story('Income add')
 def test_add_income(driver):
