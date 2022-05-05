@@ -11,6 +11,13 @@ english_language_button = (By.XPATH, '/html/body/div[1]/div/header/div[3]/span/d
 accounts_cash_field = (By.XPATH, '/html/body/div[1]/div/main/div[2]/div[4]/table/tbody/tr[2]/td[1]/div/a/span[2]')
 personal_account_button = (By.XPATH, '/html/body/div[1]/div/header/div[4]/div/button')
 logout_button = (By.XPATH, '/html/body/div[1]/div/header/div[4]/div/div/div/nav/button[2]')
+three_humans_icon = (By.XPATH, '/html/body/div[1]/div/header/div[3]/div/button')
+make_a_team_button = (By.XPATH, '/html/body/div[1]/div/header/div[3]/div/div/div/nav/a')
+container_of_teams = (By.XPATH, '/html/body/div[1]/div/header/div[3]/div/div/div/nav/div[1]')
+dream_team_button = (By.XPATH, '/html/body/div[1]/div/header/div[3]/div/div/div/nav/div[1]/a[2]')
+team_from_dream_button = (By.XPATH, '/html/body/div[1]/div/header/div[3]/div/div/div/nav/div[1]/a[3]')
+name_of_current_user = (By.CSS_SELECTOR, 'div[class="main-team-name"]')
+
 
 categories_field = (By.XPATH, '/html/body/div[4]/div/div[2]/div/div[2]/div[2]/div/div[1]/button[2]')
 add_category_button = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div[2]/div/div/div/button[1]')
@@ -51,6 +58,9 @@ cash_in_duties = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div[2]/div/div/div
 back_at_main_button = (By.CSS_SELECTOR, 'a[class="btn-icon _size2 _back"]')
 error_field = (By.XPATH, '/html/body/div[4]/div/div[2]/div/div[2]/div/div/div[1]/div[3]/div[2]')
 title_of_category = (By.CSS_SELECTOR, 'div[class="title"]')
+
+input_team_name_field = (By.XPATH, '/html/body/div[1]/div/div[1]/main/form/div/label/div/input')
+submit_new_team_button = (By.XPATH, '/html/body/div[1]/div/div[1]/main/button')
 
 
 class CommonPage(BasePage):
@@ -251,3 +261,36 @@ class CommonPage(BasePage):
     @property
     def logout(self):
         return self.find_element(logout_button)
+
+    @property
+    def three_humans(self):
+        return self.find_element(three_humans_icon)
+
+    @property
+    def make_a_team(self):
+        return self.find_element(make_a_team_button)
+
+    @property
+    def input_team_name(self):
+        return self.find_element(input_team_name_field)
+
+    @property
+    def submit_new_team(self):
+        return self.find_element(submit_new_team_button)
+
+    @property
+    def teams_container(self):
+        return self.find_element(container_of_teams)
+
+    @property
+    def team_from_dream(self):
+        return self.find_element(team_from_dream_button)
+
+    @property
+    def dream_team(self):
+        return self.find_element(dream_team_button)
+
+    @property
+    def name_of_user(self):
+        return self.find_element(name_of_current_user)
+
