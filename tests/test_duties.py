@@ -1,18 +1,13 @@
-import pytest
 from pages.login_page import LoginPage
 from pages.common_page import CommonPage
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.alert import Alert
 from time import sleep
-from datetime import date
 import allure
 
 
 @allure.feature('Duties')
 @allure.story('Duty add')
-@pytest.mark.skip
 def test_add_duty(driver):
     login_page = LoginPage(driver)
     login_page.open()
@@ -74,7 +69,6 @@ def test_add_duty_balance(driver):
 
 @allure.feature('Duties')
 @allure.story('Duty return')
-@pytest.mark.skip
 def test_return_duty(driver):
     login_page = LoginPage(driver)
     login_page.open()
