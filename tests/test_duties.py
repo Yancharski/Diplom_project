@@ -1,18 +1,13 @@
-import pytest
 from pages.login_page import LoginPage
 from pages.common_page import CommonPage
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.alert import Alert
 from time import sleep
-from datetime import date
 import allure
 
 
 @allure.feature('Duties')
 @allure.story('Duty add')
-@pytest.mark.skip
 def test_add_duty(driver):
     login_page = LoginPage(driver)
     login_page.open()
@@ -56,8 +51,24 @@ def test_add_duty(driver):
 
 
 @allure.feature('Duties')
+@allure.story('Duty add in balance')
+def test_add_duty_balance(driver):
+    login_page = LoginPage(driver)
+    login_page.open()
+    common_page = CommonPage(driver)
+    common_page.duty.click()
+    WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(
+            common_page.back_to_menu
+        )
+    )
+    common_page.back_to_menu.click()
+    assert '200' in common_page.balance.text
+
+
+
+@allure.feature('Duties')
 @allure.story('Duty return')
-@pytest.mark.skip
 def test_return_duty(driver):
     login_page = LoginPage(driver)
     login_page.open()
@@ -107,52 +118,6 @@ def test_delete_duty(driver):
     common_page.accept_delete_contaragent.click()
     common_page.close_alert.click()
     assert not name in common_page.completed_duties.text
-
-
-@allure.feature('Duties')
-@allure.story('Duty add in balance')
-def test_add_duty_balance(driver):
-    login_page = LoginPage(driver)
-    login_page.open()
-    common_page = CommonPage(driver)
-    common_page.duty.click()
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable(
-            common_page.add_duty
-        )
-    )
-    common_page.add_duty.click()
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable(
-            common_page.checkbox
-        )
-    )
-    common_page.contragent.click()
-    common_page.add_contragent.click()
-    common_page.input_contragent.send_keys(common_page.name_of_contragent)
-    common_page.submit_new_contragent.click()
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable(
-            common_page.choose_valute
-        )
-    )
-    sleep(0.5)
-    common_page.choose_valute.click()
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable(
-            common_page.duties_cash
-        )
-    )
-    common_page.duties_cash.click()
-    common_page.input_currency.send_keys('200')
-    common_page.submit_duty.click()
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable(
-            common_page.back_to_menu
-        )
-    )
-    common_page.back_to_menu.click()
-    assert '200' in common_page.balance.text
 
 
 @allure.feature('Duties')

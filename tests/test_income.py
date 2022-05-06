@@ -1,10 +1,7 @@
-import pytest
 from pages.login_page import LoginPage
 from pages.common_page import CommonPage
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.alert import Alert
 from time import sleep
 from datetime import date
 import allure
@@ -12,7 +9,6 @@ import allure
 
 @allure.feature('Income')
 @allure.story('Income category add')
-@pytest.mark.skip
 def test_add_category(driver):
     name = 'Some_category'
     login_page = LoginPage(driver)
@@ -26,9 +22,21 @@ def test_add_category(driver):
     )
     common_page.categories.click()
     common_page.add_category.click()
-    common_page.input_category.send_keys(name + Keys.ENTER)
+    common_page.input_category.send_keys(name)
+    common_page.submit_new_category.click()
+    WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(
+            common_page.categories
+        )
+    )
     common_page.categories.click()
+    WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(
+            common_page.salary
+        )
+    )
     assert name in common_page.categories_list.text
+
 
 @allure.feature('Income')
 @allure.story('Income add')
