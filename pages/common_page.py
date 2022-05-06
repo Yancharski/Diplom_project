@@ -17,10 +17,12 @@ container_of_teams = (By.XPATH, '/html/body/div[1]/div/header/div[3]/div/div/div
 dream_team_button = (By.XPATH, '/html/body/div[1]/div/header/div[3]/div/div/div/nav/div[1]/a[2]')
 team_from_dream_button = (By.XPATH, '/html/body/div[1]/div/header/div[3]/div/div/div/nav/div[1]/a[3]')
 name_of_current_user = (By.CSS_SELECTOR, 'div[class="main-team-name"]')
-
+expenses_button = (By.XPATH, '/html/body/div[1]/div/main/div[2]/div[2]/div/div[11]/button')
+expenses_fields = (By.XPATH, '/html/body/div[1]/div/main/div[2]/div[2]/div/div[3]/div/div[2]/a')
 
 categories_field = (By.XPATH, '/html/body/div[4]/div/div[2]/div/div[2]/div[2]/div/div[1]/button[2]')
 add_category_button = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div[2]/div/div/div/button[1]')
+submit_new_category_button = (By.XPATH, '/html/body/div[6]/div/div[2]/div/div[2]/div/div/div[5]/button')
 input_category_field = (By.CSS_SELECTOR, 'input[placeholder="Название категории"]')
 list_of_catigories = (By.CLASS_NAME, 'hex-select-list')
 salary_category = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div[2]/div/div/div/button[2]')
@@ -61,6 +63,11 @@ title_of_category = (By.CSS_SELECTOR, 'div[class="title"]')
 
 input_team_name_field = (By.XPATH, '/html/body/div[1]/div/div[1]/main/form/div/label/div/input')
 submit_new_team_button = (By.XPATH, '/html/body/div[1]/div/div[1]/main/button')
+
+select_account_in_expenses = (By.XPATH, '/html/body/div[4]/div/div[2]/div/div[2]/div[2]/div/div[1]/button[1]')
+select_category_in_expenses = (By.XPATH, '/html/body/div[4]/div/div[2]/div/div[2]/div[2]/div/div[1]/button[2]')
+auto_ctaegory_in_expenses = (By.XPATH, '/html/body/div[5]/div/div[2]/div/div[2]/div/div/div/button[2]')
+expenses_in_list = (By.XPATH, '/html/body/div[1]/div/main/div[3]/div[2]/div[6]/div/table')
 
 
 class CommonPage(BasePage):
@@ -294,3 +301,30 @@ class CommonPage(BasePage):
     def name_of_user(self):
         return self.find_element(name_of_current_user)
 
+    @property
+    def expenses(self):
+        return self.find_element(expenses_button)
+
+    @property
+    def select_account(self):
+        return self.find_element(select_account_in_expenses)
+
+    @property
+    def select_category(self):
+        return self.find_element(select_category_in_expenses)
+
+    @property
+    def auto_category(self):
+        return self.find_element(auto_ctaegory_in_expenses)
+
+    @property
+    def expenses_field(self):
+        return self.find_element(expenses_fields)
+
+    @property
+    def list_of_expenses(self):
+        return self.find_element(expenses_in_list)
+
+    @property
+    def submit_new_category(self):
+        return self.find_element(submit_new_category_button)
